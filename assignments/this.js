@@ -21,12 +21,55 @@ function sayCar(car) {
 
 // Principle 2
 
+
 // code example for Implicit Binding
+
+const myObj = {
+    greeting: 'Hello did you know',
+    sayHello: function(name) {
+      console.log(`${this.greeting} my name is ${name}`);
+      console.log(this);
+    }
+  };
+  myObj.sayHello('Sebas');
 
 // Principle 3
 
 // code example for New Binding
 
+function CordialPerson(greeter) {
+    this.greeting = 'Hello there ';
+    this.greeter = greeter;
+    this.speak = function() {
+      console.log(this.greeting + this.greeter);
+      console.log(this);
+    };
+  }
+  
+  const Karen = new CordialPerson('Tefy');
+  const Tefy = new CordialPerson('Karen');
+  
+  Karen.speak();
+  Tefy.speak();
+
 // Principle 4
 
 // code example for Explicit Binding
+
+// function CordialPerson(greeter) {
+//     this.greeting = 'Hello there ';
+//     this.greeter = greeter;
+//     this.speak = function() {
+//       console.log(this.greeting + this.greeter);
+//       console.log(this);
+//     };
+//   }
+  
+//   const Karen = new CordialPerson('Tefy');
+//   const Tefy = new CordialPerson('Karen');
+  
+//   Karen.speak();
+//   Tefy.speak();
+
+  Tefy.speak.call(Karen);
+   Karen.speak.apply(Tefy);
